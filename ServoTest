@@ -1,0 +1,45 @@
+package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+//21/09/2022
+//Necessary packages imported - FTC SDKs have not yet been downloaded off GitHub
+//Requires packages to run - may need to be downloaded off a different computer
+
+
+@TeleOp
+
+public class ServoTest extends OpMode {
+    private Servo servo_test = null;
+
+   @Override
+    public void init()
+    {
+        servo_test = hardwareMap.servo.get("servo"); //Labelling servo on FTC App
+    }
+    public void servo_move()
+    {
+        if(gamepad1.left_bumper) //When x is pressed...
+        {
+            servo_test.setPosition(-1);   //Position of Servo e.g. -1 is one anticlockwise rotation, 1 is one clockwise rotation
+            //NOTE: Servos are fragile - don't exert too much power
+        }
+        else if(gamepad1.right_bumper) //When a is pressed...
+        {
+            servo_test.setPosition(1);
+            //NOTE: Servos are fragile - don't exert too much power
+        }
+    }
+    @Override
+    public void loop()
+    {
+        servo_move();
+    }
+
+   @Override
+    public void stop() {
+    }
+}
+
